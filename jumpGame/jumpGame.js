@@ -1,35 +1,29 @@
 const nums = [2,3,1,1,4]
 const nums2 = [2,1]
 const nums3 = [2,3,1,1,4]
-
-console.log(jumpGame(nums3))
+const nums4 = [1,3,2]
 
 function jumpGame (nums){
     let jumps = 0;
-    let jumpPoint = 0;
-    let jumpLength = nums[0];
+    let currentPosition = 0;
+    let jumpLength = nums[currentPosition];
 
     while(nums.length !== 1){
-        let higherValueIndex = 0
-        jumps++
-        for(let i = jumpLength + jumpPoint; i > jumpPoint; i--){
-            let higher
-            // NEED TO GET THE VALUE OF THE JUMP NOT THE INDEX
-            if(nums[i] !== undefined){
-                let currentPoint = jumpPoint + jumpLength
-                let jumpValue = currentPoint - i
+        jumps ++
+        let highestJumpValueIndex = 0
 
-                if(nums[i] - (jumpPoint + jumpLength - i) > nums[higherValueIndex] - (jumpPoint + jumpLength - i)) higherValueIndex = i
+        for(let i = currentPosition + jumpLength; i > currentPosition; i--){
 
-            }else{
-                console.log(nums[i])
-                return jumps
-            }
+            const finalJump = nums[i + nums[i]] === undefined || nums[i] + i === nums.length
+            if(finalJump) return jumps + 1
+
+            if(i - currentPosition + nums[i] > i - currentPosition + nums[highestJumpValueIndex]) highestJumpValueIndex = i
+
         }
-    
-        jumpPoint = higherValueIndex
-        jumpLength = nums[higherValueIndex]
+        currentPosition = highestJumpValueIndex
+        // console.log("still running")
     }
+    return jumps
 }
 
-
+module.exports = jumpGame
