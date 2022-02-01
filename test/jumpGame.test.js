@@ -19,6 +19,11 @@ describe("jumpGame", function(){
         expect(result).eql(1)
     })
 
+    it("Given [3,2,1], Should return 1 jumps",function(){
+        const result = jumpGame([3,2,1])
+        expect(result).eql(1)
+    })
+
     it("Given [2,3,1,1,4], Should return 2 jumps",function(){
         const result = jumpGame([2,3,1,1,4])
         expect(result).eql(2)
