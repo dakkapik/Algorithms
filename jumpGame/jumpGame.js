@@ -1,8 +1,3 @@
-
-const nums4 = [1,2]
-
-console.log("FINALE:",jumpGame(nums4))
-
 function jumpGame (nums){
     let jumps = 0;
     let currentPosition = 0;

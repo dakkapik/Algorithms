@@ -1,0 +1,22 @@
+{
+    "jumpGame": {
+        "runtime":{
+            "ms":68,
+            "standingPercent": 98.47
+        },
+        "memoryUsage":{
+            "mb":44.3,
+            "standingPercent":17.18
+        }
+    },
+    "jumpGameMK2": {
+        "runtime":{
+            "ms":105,
+            "standingPercent": 64.35
+        },
+        "memoryUsage":{
+            "mb":43.8,
+            "standingPercent":21.30
+        }
+    }
+}
