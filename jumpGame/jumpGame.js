@@ -1,15 +1,15 @@
 function jumpGame (nums){
     let jumps = 0;
     let currentPosition = 0;
-    
     while(nums.length !== 1){
         let jumpLength = nums[currentPosition];
         let highestJumpValueIndex = currentPosition + 1;
         let reach = currentPosition + jumpLength
         let atEnd = reach >= nums.length - 1
-
+        
         if(atEnd) return jumps + 1
-    
+        
+        //TRY IT WITH MATH.MAX()
         for(let i = reach; i > currentPosition; i--){
             const thisReach = i + nums[i]
             const highestReach = highestJumpValueIndex + nums[highestJumpValueIndex]

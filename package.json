@@ -10,7 +10,8 @@
     "mocha": "^9.2.0"
   },
   "scripts": {
-    "test": "mocha --exit"
+    "test": "mocha --exit",
+    "test_pali": "mocha ./test/longestPalindromicSubstring.test.js --exit"
   },
   "repository": {
     "type": "git",
