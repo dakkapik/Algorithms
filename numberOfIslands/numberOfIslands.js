@@ -38,9 +38,10 @@ const numberOfIslands = (grid) => {
     if(currentYline) vLines.push(currentYline)
     //describe the bigO of both loops
 
-    const islands = {}
+    const islands = []
 
     for(let i = 0; i < hLines.length; i++){
+        let islandNumber = islands.length + 1
         for(let o = 0; o < vLines.length; o++){
             if(
                 hLines[i].x >= vLines[o].x && 
@@ -48,6 +49,11 @@ const numberOfIslands = (grid) => {
                 hLines[i].y >= vLines[o].y && 
                 hLines[i].y <= vLines[o].y + vLines[o].length
             ){
+                if(vLines[o].claimed){
+                    islandNumber = vLines[o].claimed
+                } else {    
+                    
+                }
                 if(islands[i]){
                     islands[i].push(o)
                 }else{
