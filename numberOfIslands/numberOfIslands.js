@@ -3,9 +3,8 @@ const numberOfIslands = (grid) => {
     const hLines = []
     const vLines = []
 
-    let currentXline 
-    let currentYline 
-    console.log(grid)
+    let currentXline;
+    let currentYline;
 
     for(let y = 0; y < grid.length; y++){
         for(let x = 0; x < grid[y].length; x++){
@@ -13,9 +12,10 @@ const numberOfIslands = (grid) => {
                 if(grid[y][x -1] === undefined || grid[y][x -1] === "0"){
                     if(currentXline) hLines.push(currentXline)
 
-                    currentXline = {x, y, length: 1}
+                    currentXline = new Set();
+                    currentXline.add(`${x}-${y}`)
                 }else{
-                    currentXline.length ++;
+                    currentXline.add(`${x}-${y}`)
                 }
             }
         }
@@ -28,42 +28,40 @@ const numberOfIslands = (grid) => {
                 if(grid[y -1] === undefined || grid[y -1][x] === "0"){
                     if(currentYline) vLines.push(currentYline)
 
-                    currentYline = {x, y, length: 1}
+                    currentYline = new Set();
+                    currentYline.add(`${x}-${y}`)
                 }else{
-                    currentYline.length ++;
+                    currentYline.add(`${x}-${y}`)
                 }
             }
         }
     }
     if(currentYline) vLines.push(currentYline)
     //describe the bigO of both loops
+    //constant 
 
     const islands = []
 
-    for(let i = 0; i < hLines.length; i++){
-        let islandNumber = islands.length + 1
-        for(let o = 0; o < vLines.length; o++){
-            if(
-                hLines[i].x >= vLines[o].x && 
-                hLines[i].x + hLines[i].x <= vLines[o].length && 
-                hLines[i].y >= vLines[o].y && 
-                hLines[i].y <= vLines[o].y + vLines[o].length
-            ){
-                if(vLines[o].claimed){
-                    islandNumber = vLines[o].claimed
-                } else {    
-                    
-                }
-                if(islands[i]){
-                    islands[i].push(o)
-                }else{
-                    islands[i] = [o]
+    for(const i in hLines){
+        for(const point of hLines[i]){
+        
+            for(const o in vLines){
+                if(vLines[o].has(point)){
+                    console.log(vLines[o])
                 }
             }
 
+            console.log(point)
         }
     }
-    console.log(islands)
+
+    // const xLine = hLines[0]
+    // const yLine = vLines[0]
+
+    // const intersection = new Set([...xLine].filter(x => yLine))
+
+    // console.log(intersection)
+
     console.log(hLines)
     console.log(vLines)
 }
@@ -85,5 +83,5 @@ const grid2 = [
 const grid3 = [[]]
 
 console.log(numberOfIslands(grid) === 0)
-console.log(numberOfIslands(grid2) === 3)
-console.log(numberOfIslands(grid3) === 0)
+// console.log(numberOfIslands(grid2) === 3)
+// console.log(numberOfIslands(grid3) === 0)
